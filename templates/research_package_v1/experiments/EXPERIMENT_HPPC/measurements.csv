@@ -1,0 +1,1 @@
+﻿source_id,cell_id,test_id,spectrum_id,measurement_id,measurement_type,soc_pct,soh_pct,temperature_C,cycle_number,initial_capacity_Ah,current_capacity_Ah,cell_model,cathode_family,cathode_composition,cell_format,soc_basis,soh_basis,temperature_basis,cycle_basis,initial_capacity_basis,current_capacity_basis,condition_reference,notes,calendar_days,calendar_basis

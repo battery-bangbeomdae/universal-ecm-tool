@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "encoding": "UTF-8",
+  "missing_numeric": "empty field",
+  "join_keys": [
+    "source_id",
+    "cell_id",
+    "test_id",
+    "spectrum_id"
+  ],
+  "measurement_id_rule": "measurement_id equals spectrum_id; unique within research",
+  "signal_required": {
+    "EIS": [
+      "source_id",
+      "cell_id",
+      "test_id",
+      "spectrum_id",
+      "measurement_id",
+      "point_index",
+      "frequency_hz",
+      "z_real_ohm",
+      "z_imag_ohm"
+    ],
+    "HPPC": [
+      "source_id",
+      "cell_id",
+      "test_id",
+      "spectrum_id",
+      "measurement_id",
+      "point_index",
+      "time_s",
+      "current_A",
+      "voltage_V"
+    ]
+  },
+  "optional_conditions": {
+    "soc_pct": {
+      "unit": "%",
+      "required_value": false
+    },
+    "soh_pct": {
+      "unit": "%",
+      "required_value": false
+    },
+    "temperature_C": {
+      "unit": "degC",
+      "required_value": false
+    },
+    "cycle_number": {
+      "unit": "count",
+      "required_value": false
+    },
+    "initial_capacity_Ah": {
+      "unit": "Ah",
+      "required_value": false
+    },
+    "current_capacity_Ah": {
+      "unit": "Ah",
+      "required_value": false
+    },
+    "calendar_days": {
+      "unit": "day",
+      "required_value": false
+    }
+  },
+  "signs": {
+    "z_imag_ohm": "signed Im(Z)",
+    "current_A": "positive charging"
+  },
+  "manifest_auto_import_supported": false
+}

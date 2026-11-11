@@ -1,0 +1,13 @@
+{
+  "kind": "REAL_PUBLISHED_TIME_CURRENT_VOLTAGE",
+  "source_file": "gh/data/extracted/D014_Michigan_NMC111_formation/fast-formation/data/2021-08-post-mortem-biologic-pc/20210712_hppc_eis_CA1.txt",
+  "source_sha256": "f85bf76264c923786e8d0cf223f940a5d03487d2d82fc228d041f14cc3bfe378",
+  "source_first_line": 9933,
+  "source_last_line": 10001,
+  "rows": 69,
+  "selection": "First approximately 10-second discharge pulse and \u00b1180-second surrounding rests, all freq/Hz=0",
+  "current_convention": "Bio-Logic signed current: negative discharge in selected voltage-drop pulse; app setting charge_positive",
+  "doi": "10.7302/pa3f-4w30",
+  "soc": "unknown; not assigned",
+  "warning": "Nonuniform sampling and finite rest; local fitted parameters require review, not independently validated."
+}

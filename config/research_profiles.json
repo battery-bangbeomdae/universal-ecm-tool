@@ -1,0 +1,158 @@
+{
+  "profiles": [
+    {
+      "id": "piombo_singlecell_hppc",
+      "path_regex": "LG_M50T_Samsung50E_Piombo.*1_Single_cell_characterisation.*HPPC_MultiSine_.*\\.mat$",
+      "evidence": "Piombo 2024 section 4.1 single-cell campaign; existing team_data_20261106/Piombo_singlecell_HPPC_windows.csv records exact source rows, verified against the canonical signal CSV.",
+      "columns": [
+        {
+          "source": "TimeData",
+          "target": "Time [s]"
+        },
+        {
+          "source": "CurrentData",
+          "target": "Current [A]"
+        },
+        {
+          "source": "VoltageData",
+          "target": "Voltage [V]"
+        },
+        {
+          "source": "TempData",
+          "target": "Temperature [C]"
+        },
+        {
+          "source": "CycleIndex",
+          "target": "protocol_cycle_index"
+        }
+      ],
+      "soc_source": "",
+      "soc_codes": [],
+      "soc_values": []
+    },
+    {
+      "id": "molicel_independent_rest",
+      "path_regex": "Molicel_P42A_Independent_EIS.*Factor_Resttime.*\\.[Cc][Ss][Vv]$",
+      "evidence": "Author demo01_Resttime.m/demo02_SOC.m and paper Tables 1-2: Hz, Ohm, deg; EIS_Test_ID groups 0-4=80%,5-9=60%,10-14=40%,15-19=20%.",
+      "columns": [
+        {
+          "source": "Frequency",
+          "target": "Frequency [Hz]"
+        },
+        {
+          "source": "Zreal",
+          "target": "Zreal [Ohm]"
+        },
+        {
+          "source": "Zimg",
+          "target": "Zimag [Ohm]"
+        },
+        {
+          "source": "Zmod",
+          "target": "Magnitude [Ohm]"
+        },
+        {
+          "source": "Zphz",
+          "target": "Phase [deg]"
+        },
+        {
+          "source": "EIS_Test_ID",
+          "target": "spectrum_id"
+        }
+      ],
+      "soc_source": "spectrum_id",
+      "soc_codes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "soc_values": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        60,
+        60,
+        60,
+        60,
+        60,
+        40,
+        40,
+        40,
+        40,
+        40,
+        20,
+        20,
+        20,
+        20,
+        20
+      ]
+    },
+    {
+      "id": "umich_long_team",
+      "path_regex": "UMich_Mohtat_EIS_Goong.*NCM_EIS_SOC별_25C.*\\.csv$",
+      "evidence": "Source folder README.md explicitly defines SOC as percent and EIS measurement temperature as degC.",
+      "columns": [
+        {
+          "source": "SOC",
+          "target": "SOC [%]"
+        }
+      ],
+      "soc_source": "",
+      "soc_codes": [],
+      "soc_values": []
+    },
+    {
+      "id": "kit_native_eis_conditions",
+      "path_regex": "D009_KIT_NMC_CSiO.*cell_eisv2_.*\\.csv$",
+      "evidence": "Author Data Structure v05.3.xlsx EISV2: native z_amp_mOhm and z_ph_deg, soc_nom [%], t_avg_degC [C], timestamp_s groups one sweep; cyc_charged is direction, soh_imp is NOT capacity SoH. No cross-file EOC conditions borrowed.",
+      "columns": [
+        {
+          "source": "freq_Hz",
+          "target": "Frequency [Hz]"
+        },
+        {
+          "source": "z_amp_mOhm",
+          "target": "Magnitude [mOhm]"
+        },
+        {
+          "source": "z_ph_deg",
+          "target": "Phase [deg]"
+        },
+        {
+          "source": "soc_nom",
+          "target": "SOC [%]"
+        },
+        {
+          "source": "t_avg_degC",
+          "target": "Temperature [C]"
+        },
+        {
+          "source": "timestamp_s",
+          "target": "spectrum_id"
+        }
+      ],
+      "soc_source": "",
+      "soc_codes": [],
+      "soc_values": []
+    }
+  ]
+}

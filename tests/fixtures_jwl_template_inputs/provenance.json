@@ -1,0 +1,30 @@
+[
+  {
+    "file": "Molicel_P42A_Independent_EIS_conditions.csv",
+    "source_archive": "JWL/Universal_ECM_Tool_v3_merged_20261110.zip",
+    "source_member": "Universal_ECM_Tool_v3_merged/templates/team_data_20261106/tool_input_pairs/Molicel_P42A_Independent_EIS_conditions.csv",
+    "sha256": "41833bf7f508b9a6c885bcad16f0e57deb3ad863a086c21bf132523bb167b3f2",
+    "route": "archived_JWL_curated_template_test_input"
+  },
+  {
+    "file": "Molicel_P42A_Independent_EIS_signals.csv",
+    "source_archive": "JWL/Universal_ECM_Tool_v3_merged_20261110.zip",
+    "source_member": "Universal_ECM_Tool_v3_merged/templates/team_data_20261106/tool_input_pairs/Molicel_P42A_Independent_EIS_signals.csv",
+    "sha256": "27f9ca1472d59d8e70d4ff5530c0531ebe76269f25dc619687112b62be8c6bfe",
+    "route": "archived_JWL_curated_template_test_input"
+  },
+  {
+    "file": "D011_NMC532_pouch64Ah_EIS_signals.csv",
+    "source_archive": "JWL/Universal_ECM_Tool_v3_merged_20261110.zip",
+    "source_member": "Universal_ECM_Tool_v3_merged/templates/team_data_20261106/tool_input_pairs/D011_NMC532_pouch64Ah_EIS_signals.csv",
+    "sha256": "6bc25caf02c90e55fd9f1edb59998a344054bb960729aeaed2117621c2d29f9a",
+    "route": "archived_JWL_curated_template_test_input"
+  },
+  {
+    "file": "D011_NMC532_pouch64Ah_EIS_conditions.csv",
+    "source_archive": "JWL/Universal_ECM_Tool_v3_merged_20261110.zip",
+    "source_member": "Universal_ECM_Tool_v3_merged/templates/team_data_20261106/tool_input_pairs/D011_NMC532_pouch64Ah_EIS_conditions.csv",
+    "sha256": "a312530ed7ded2e67dc59f45784766294f1dcd776a6560d02fc34e4ae2158a0e",
+    "route": "archived_JWL_curated_template_test_input"
+  }
+]

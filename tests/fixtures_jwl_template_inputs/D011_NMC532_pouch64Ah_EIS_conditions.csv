@@ -1,0 +1,11 @@
+﻿source_id,cell_id,test_id,spectrum_id,soc_pct,soh_pct,temperature_C,cycle_number,cell_model,cathode_family,cathode_composition,cell_format,temperature_source_text,temperature_reported_uncertainty_C
+Zenodo17746533,cell_not_identified,EIS_00oC_info,EIS_00oC_info,,,1.48,,,NMC,NMC532,pouch,1.48+-0.06,0.06
+Zenodo17746533,cell_not_identified,EIS_05oC_info,EIS_05oC_info,,,6.46,,,NMC,NMC532,pouch,6.46+-0.04,0.04
+Zenodo17746533,cell_not_identified,EIS_10oC_info,EIS_10oC_info,,,11.38,,,NMC,NMC532,pouch,11.38+-0.06,0.06
+Zenodo17746533,cell_not_identified,EIS_15oC_info,EIS_15oC_info,,,16.34,,,NMC,NMC532,pouch,16.34+-0.05,0.05
+Zenodo17746533,cell_not_identified,EIS_20oC_info,EIS_20oC_info,,,21.18,,,NMC,NMC532,pouch,21.18+-0.06,0.06
+Zenodo17746533,cell_not_identified,EIS_25oC_info,EIS_25oC_info,,,26.35,,,NMC,NMC532,pouch,26.35+-0.28,0.28
+Zenodo17746533,cell_not_identified,EIS_25oC_info_2,EIS_25oC_info_2,,,26.02,,,NMC,NMC532,pouch,26.02+-0.04,0.04
+Zenodo17746533,cell_not_identified,EIS_30oC_info,EIS_30oC_info,,,30.98,,,NMC,NMC532,pouch,30.98+-0.05,0.05
+Zenodo17746533,cell_not_identified,EIS_35oC_info,EIS_35oC_info,,,35.96,,,NMC,NMC532,pouch,35.96+-0.06,0.06
+Zenodo17746533,cell_not_identified,EIS_45oC_info,EIS_45oC_info,,,45.88,,,NMC,NMC532,pouch,45.88+-0.05,0.05

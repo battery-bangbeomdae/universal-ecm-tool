@@ -1,0 +1,11 @@
+{
+  "kind": "REAL_PUBLISHED_MEASUREMENTS",
+  "source": "gh/data/derived/D010_CALB_NMC532/eis_measurements.csv",
+  "source_sha256": "0fa789045cd1ee918165f2cebf7639d6b3af0e9da049c9e37ebc285c375d8073",
+  "conditions": "gh/data/processed/D010_CALB_NMC532/eis_spectra_index.csv",
+  "rows": 972,
+  "spectra": 12,
+  "selection": "3_Characterization, Cell_4",
+  "doi": "10.5281/zenodo.22301764",
+  "note": "EIS source values retained; SOC/temperature from publisher-linked index. This is not synthetic data. Fitted parameters are estimates."
+}

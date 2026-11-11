@@ -1,0 +1,9 @@
+# 계산·검증 산출물 (저장소에 올리지 않음)
+output/
+merge_provenance/
+ecm_result/
+UniversalECM_*/
+ECM_standard_*/
+*.asv
+slprj/
+.DS_Store

@@ -64,7 +64,7 @@ tests/                   자동 검사 (MATLAB unittest)
 
 ## 동작 확인 범위와 한계
 
-- 동작 확인: Windows·macOS + MATLAB R2026b. 다른 OS·버전은 확인하지 않았습니다.
+- 동작 확인: macOS + MATLAB R2026b. 다른 OS·버전은 확인하지 않았습니다.
 - 결과는 넣은 데이터에 맞춘 **추정값**이며, 배터리 안전 판정이나 BMS 제어값으로 그대로 쓰면 안 됩니다.
 - 주행 데이터 같은 일반 동적 시계열은 지원하지 않습니다.
 
@@ -73,9 +73,9 @@ tests/                   자동 검사 (MATLAB unittest)
 | 파일 | 출처 | 이용 조건 |
 |---|---|---|
 | `examples/REAL_D010_eis_12spectra.csv` | Medina, R. et al., *Characterization, ageing and post-mortem dataset of commercial 58Ah prismatic NMC cells*, Zenodo (2026). DOI: [10.5281/zenodo.22301764](https://doi.org/10.5281/zenodo.22301764) — 일부 발췌, 측정값 무변경 | CC BY 4.0 |
-| `examples/REAL_D014_hppc_one_pulse.csv` | Weng, A. et al., *Battery test data – fast formation study*, University of Michigan Deep Blue Data (2021). DOI: [10.7302/pa3f-4w30](https://doi.org/10.7302/pa3f-4w30) — 일부 발췌 | 원 출처 조건을 따름 |
+| `examples/REAL_D014_hppc_one_pulse.csv` | Weng, A. et al., *Battery test data – fast formation study*, University of Michigan Deep Blue Data (2021). DOI: [10.7302/pa3f-4w30](https://doi.org/10.7302/pa3f-4w30) — 일부 발췌 | CC BY-NC 4.0 (비상업) |
 
-`SYNTHETIC_*` 파일은 회로 수식으로 만든 연습용 데이터입니다.
+`SYNTHETIC_*` 파일은 회로 수식으로 만든 연습용 데이터입니다. 시험용 제3자 데이터의 출처와 라이선스는 [tests/DATA_SOURCES.md](https://github.com/battery-bangbeomdae/universal-ecm-tool/blob/main/tests/DATA_SOURCES.md)에 있습니다.
 
 ## 라이선스
 

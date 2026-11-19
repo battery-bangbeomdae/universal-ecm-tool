@@ -9,7 +9,6 @@ function setupOnce(t)
 t.TestData.Root=fileparts(fileparts(mfilename('fullpath')));addpath(t.TestData.Root);
 t.TestData.Fx=fullfile(t.TestData.Root,'tests','fixtures_raw');
 end
-% ------------------------------------------------------------------ REAL: Wuppertal cell tester (the target case)
 function testWuppertalRawOpensAndFits(t)
 f=fullfile(t.TestData.Fx,'wuppertal_50E_MCU1_REAL_excerpt_HPPC1.csv');
 i=uecm.readInput(f,uecm.defaults());r=i.RawReport;
@@ -40,7 +39,6 @@ i=uecm.readInput(fullfile(t.TestData.Fx,'wuppertal_50E_MCU1_REAL_excerpt_HPPC1.c
 verifyEqual(t,i.Settings.CurrentSign,"discharge_positive");verifyEqual(t,i.Settings.MaxPulseDuration_s,30);
 verifyFalse(t,any(contains(i.RawReport.Applied,"CurrentSign")));
 end
-% ------------------------------------------------------------------ REAL: Digatron CSV / McMaster MAT (Samsung 30T)
 function testDigatronRawCSV(t)
 [T,r]=uecm.readRaw(fullfile(t.TestData.Fx,'digatron_30T_25C_HPPC_first1100s.csv'));
 verifyEqual(t,r.Profile,"digatron_csv");verifyEqual(t,r.Kind,"HPPC");
@@ -57,7 +55,6 @@ S=b.Fits{2}.Alternatives;names=cellfun(@(c)string(c.ModelName),S);
 verifyEqual(t,S{names=="2RC"}.Parameters.R0_Ohm,0.009513,'RelTol',0.02);
 verifyEqual(t,S{names=="1RC"}.Parameters.R0_Ohm,0.012207,'RelTol',0.02);
 end
-% ------------------------------------------------------------------ REAL: Warwick LG M50 EIS (headerless MAT/XLS)
 function testWarwickRawMatXlsEqualTemplate(t)
 fx=t.TestData.Fx;
 [M,r]=uecm.readRaw(fullfile(fx,'Cell28_100SOH_25degC_50SOC_10000.mat'));
@@ -83,7 +80,6 @@ out=fullfile(tmp,'uecm_warwick_test.csv');
 verifyEqual(t,height(log),3);verifyEqual(t,numel(unique(T.spectrum_id)),3);
 b=uecm.analyze(uecm.readInput(out,uecm.defaults()));verifyEqual(t,height(b.Results),3);
 end
-% ------------------------------------------------------------------ layout rules (SYNTHETIC values)
 function testECLabDecimalCommaNegativeImag(t)
 [T,r]=uecm.readRaw(fullfile(t.TestData.Fx,'eclab_EIS_SYNTHETIC_decimalcomma.mpt'));
 verifyEqual(t,r.Kind,"EIS");f=logspace(5,-1,61)';z=1i*2*pi*f*1e-7+.02+.03./(1+1i*2*pi*f*.01);
@@ -116,7 +112,6 @@ function testTemplateCsvKeepsV2Path(t)
 i=uecm.readInput(fullfile(t.TestData.Root,'examples','SYNTHETIC_hppc_practice.csv'),uecm.defaults());
 verifyFalse(t,isfield(i,'RawReport'));
 end
-% ------------------------------------------------------------------ time screens / HPPC rules
 function testExactDuplicatesDroppedLosslessly(t)
 tt=(0:20)';tt=[tt(1:5);tt(5);tt(6:end)];s=uecm.screenTimeSeries(tt,zeros(size(tt)),3.7*ones(size(tt)));
 verifyFalse(t,s.Blocking);verifyEqual(t,s.Counts.exact_duplicates,1);
@@ -165,7 +160,6 @@ function testRampedPulseAccepted(t)
 tt=(0:0.001:60)';i=zeros(size(tt));on=tt>=10&tt<20;i(on)=4.9*(1-exp(-(tt(on)-10)/0.002));v=3.8-0.02*i;
 verifyEqual(t,numel(uecm.fitHPPC(tt,i,v,uecm.defaults())),1);
 end
-% ------------------------------------------------------------------ SOC from the record (full-charge anchor)
 function testSOCAnchorSynthetic(t)
 % SYNTHETIC: 1 A discharge to cutoff, rest, CC 1 A + CV taper to full, rest, then -1 A steps of 360 s.
 dt=1;tt=(0:dt:30000)';i=zeros(size(tt));v=3.6*ones(size(tt));

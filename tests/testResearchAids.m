@@ -6,7 +6,6 @@ function setupOnce(t)
 t.TestData.Root=fileparts(fileparts(mfilename('fullpath')));addpath(t.TestData.Root);
 t.TestData.Examples=fullfile(t.TestData.Root,'examples');
 end
-% ------------------------------------------------------------------ Lin-KK
 function testKKPassesForCausalCircuit(t)
 f=logspace(4,-2,61)';w=2*pi*f;z=0.02+0.03./(1+1i*w*0.06)+0.01./(1+1i*w*5)+1i*w*1e-7;   % R0 + 2 RC + L
 kk=uecm.linKK(f,real(z),imag(z));
@@ -28,7 +27,6 @@ b=uecm.analyze(uecm.readInput(fullfile(t.TestData.Examples,'SYNTHETIC_2RC_eis_pr
 verifyTrue(t,all(ismember(["kk_status","kk_max_residual"],string(b.Results.Properties.VariableNames))));
 verifyTrue(t,all(b.Results.kk_status=="pass"));                            % synthetic 2RC is KK-consistent
 end
-% ------------------------------------------------------------------ next measurement suggestion
 function testSuggestsGapWhereParameterChangesMost(t)
 soc=[10;30;50;70;90];R0=[0.040;0.022;0.020;0.0195;0.019];                 % steep at low SOC
 R=table(repmat("cellA",5,1),repmat(25,5,1),repmat("HPPC",5,1),soc,R0,R0*1.5,repmat("candidate",5,1), ...
@@ -48,7 +46,6 @@ soc=[20;50;80];R=table(repmat("c",6,1),[25;25;25;0;0;0],repmat("HPPC",6,1),[soc;
 N=uecm.suggestNextMeasurements(R);
 verifyEqual(t,N.temperature_C(1),0);verifyEqual(t,N.suggest_soc_pct(1),35);
 end
-% ------------------------------------------------------------------ methods record
 function testMethodsSummaryListsFactsAndFingerprint(t)
 b=uecm.analyze(uecm.readInput(fullfile(t.TestData.Examples,'SYNTHETIC_2RC_eis_practice.csv'),uecm.defaults()));
 f=fullfile(tempdir,"uecm_methods_test.md");if isfile(f),delete(f);end

@@ -39,7 +39,6 @@ report.Hints=[report.Hints(:);profileNotes(:)];
 [T,report]=canonical(R,report,stem,settings);
 end
 
-% ---------------------------------------------------------------- readers -> raw table + column names
 function [R,report]=fromMat(file,report)
 S=load(file);names=fieldnames(S);R=table();
 % Some research exports define channel names and units beside a scalar data structure.
@@ -278,7 +277,6 @@ if report.Profile=="digatron_csv",report.Hints(end+1)="Digatron 형식: 전류�
 if report.Profile=="biologic_eclab",report.Hints(end+1)="EC-Lab 형식: <I>/mA는 작업전극(WE)의 산화(anodic) 전류가 양수입니다. WE가 양극인 풀셀이면 충전이 +이므로, 펄스 판정 결과와 함께 확인하세요.";end
 end
 
-% ---------------------------------------------------------------- raw table -> canonical table
 function [T,report]=canonical(R,report,stem,settings)
 [R,report]=knownMatrixProfile(R,report,stem);
 R.raw_source_row=(1:height(R))';
@@ -442,7 +440,6 @@ T.(col)=x(:);
 report.Mapping=[report.Mapping;{col,name,unit,note}];
 end
 
-% ---------------------------------------------------------------- name rules
 function [role,unit,note]=roleOf(name)
 % [C] (2026-11-09 merge) a role whose unit is not a unit of that quantity in config/unit_catalog.csv is cancelled.
 note="";raw=string(name);[base,unit]=splitUnit(raw);b=lower(strtrim(base));b=regexprep(b,'\s+',' ');b=regexprep(b,'^we\(\d+\)\.','');b=replace(b,"_"," ");
@@ -566,7 +563,6 @@ end
 s=str2double(strrep(x,",","."));note="문자열→숫자";
 end
 
-% ---------------------------------------------------------------- helpers
 function best=findHeader(lines,settings)
 delims=[",",char(9),";","ws"];best=struct('score',0);
 for li=1:numel(lines)
@@ -657,7 +653,6 @@ elseif any(contains(names,"hp_pulse")),p="wuppertal_celltester";
 else,p="generic_delimited";end
 end
 
-% ---------------------------------------------------------------- documented headerless layouts
 function [R,report]=knownMatrixProfile(R,report,stem)
 names=string(R.Properties.VariableNames);
 if ~all(startsWith(names,"col_")),return,end

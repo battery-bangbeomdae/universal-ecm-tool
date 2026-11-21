@@ -52,7 +52,6 @@ if isempty(rows),error('uecm:Holdout','%s 아래에 <데이터셋>\\raw 폴더�
 Files=struct2table(vertcat(rows{:}));
 Files.code_hash=repmat(codeHash,height(Files),1);
 
-% ---- summary per dataset
 cats=["정상 변환","안전 실패","조용한 오류","기준 없음"];vars=["n_ok","n_safe_fail","n_silent","n_no_ref"];
 G=unique(Files.dataset);Summary=table();
 for k=1:numel(G)
@@ -82,7 +81,6 @@ catch ex
 end
 end
 
-% ======================================================================= one file
 function r=checkOne(ds,file,refDir,opts)
 [~,stem]=fileparts(file);
 r=struct('dataset',ds,'file',string(stem),'kind',"",'category',"",'reason',"",'blocking',"", ...
@@ -140,7 +138,6 @@ end
 if isempty(problems),r.category="정상 변환";else,r.category="조용한 오류";r.reason=join(problems," / ");end
 end
 
-% ======================================================================= helpers
 function v=maxOrNaN(x)
 x=x(isfinite(x));if isempty(x),v=NaN;else,v=max(x);end
 end

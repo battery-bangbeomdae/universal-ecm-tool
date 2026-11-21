@@ -14,7 +14,6 @@ function teardown(t)
 if isfolder(t.TestData.Dir),rmdir(t.TestData.Dir,'s');end
 end
 
-% ------------------------------------------------------------------ [D] EIS imaginary sign, physics check
 function testFlippedImaginaryIsBlocked(t)
 f=writeEIS(t,"flipped.csv",[1 -1],"Zimag [Ohm]");          % spectrum B written with the wrong sign
 p=uecm.prepare(uecm.readInput(f,uecm.defaults()));
@@ -46,7 +45,6 @@ p=uecm.prepare(uecm.readInput(fullfile(t.TestData.Fx,'eclab_EIS_SYNTHETIC_decima
 verifyFalse(t,any(p.Requests.Field=="imag_sign_physics"));
 end
 
-% ------------------------------------------------------------------ [J] unsigned current + status column
 function testUnsignedCurrentRebuiltFromStatus_TemplatePath(t)
 f=writeUnsignedHPPC(t,"unsigned_tidy.csv",false,["D","C","R"]);
 p=uecm.prepare(uecm.readInput(f,uecm.defaults()));
@@ -88,7 +86,6 @@ p=uecm.prepare(i);
 verifyFalse(t,any(contains(p.Notes,"상태 열(")));
 end
 
-% ------------------------------------------------------------------ [B] separator fallback
 function testArbinNamesRecognisedOnlyInSecondPass(t)
 f=fullfile(t.TestData.Dir,"arbin_names.csv");
 L=["Arbin export";"Date_Time,Test_Time(s),Step_Index,Current(A),Voltage(V),Aux_Temperature_1(C)"];
@@ -102,7 +99,6 @@ verifyEqual(t,r.Mapping.source_column(r.Mapping.role=="temperature_C"),"Aux_Temp
 verifyTrue(t,ismember("raw_step",string(T.Properties.VariableNames)));
 end
 
-% ------------------------------------------------------------------ [C] role-unit compatibility
 function testTemperatureNamedTIsNotTime(t)
 f=fullfile(t.TestData.Dir,"t_degc.csv");
 L=["Rig A";"Time [s],T [°C],Current [A],Voltage [V]"];
@@ -123,7 +119,6 @@ writelines(L,f);
 verifyEqual(t,r.Mapping.source_column(r.Mapping.role=="voltage_V"),"Cell Voltage [V]");   % 'Voltage [A]' dropped
 end
 
-% ------------------------------------------------------------------ [G] sweep split (2026-11-09, hold-out findings)
 function testSweepIndexCountsEachBoundaryOnce(t)
 up=logspace(-1,4,41)';down=flipud(up);
 verifyEqual(t,max(uecm.sweepIndex([up;up;up])),3);            % low->high (Zhu, Kiel): was 5 before the fix
@@ -160,7 +155,6 @@ i=uecm.readInput(f,uecm.defaults());
 verifyGreaterThan(t,strlength(string(i.Mapping.frequency)),0);
 end
 
-% ------------------------------------------------------------------ mixed Excel workbook (Kiel hold-out, 2026-11-09)
 function testMixedWorkbookFollowsAnalysisType(t)
 % Arbin-type workbook: info sheet, channel time series, ACIM (EIS). Auto must stop; EIS/HPPC must pick that sheet.
 f=fullfile(t.TestData.Dir,"mixed_arbin.xlsx");
@@ -174,7 +168,6 @@ o.Type="HPPC";[T,r]=uecm.readRaw(f,o);
 verifyEqual(t,r.Kind,"HPPC");verifyEqual(t,height(T),n);
 end
 
-% ================================================================== synthetic fixture writers
 function f=writeEIS(t,name,signs,imagHeader)
 % Randles cell R0 + R1||C1: capacitive (Im<0) everywhere -> realistic sign pattern. signs(k)=-1 flips spectrum k.
 fr=logspace(4,-2,61)';w=2*pi*fr;R0=0.020;R1=0.030;C1=2;

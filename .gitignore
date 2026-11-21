@@ -7,3 +7,4 @@ ECM_standard_*/
 *.asv
 slprj/
 .DS_Store
+tests/smoke_result_*.csv
